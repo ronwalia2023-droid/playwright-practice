@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('login and logout flow', async ({ page }) => {
+test('login and logout flow @smoke', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/login');
 
   await page.getByRole('textbox', { name: 'Username' }).fill('tomsmith');
@@ -16,7 +16,7 @@ test('login and logout flow', async ({ page }) => {
   await expect(page).toHaveURL(/.*login/);
 });
 
-test('shows error with wrong password', async ({ page }) => {
+test('shows error with wrong password @regression', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/login');
 
   await page.getByRole('textbox', { name: 'Username' }).fill('tomsmith');
@@ -27,7 +27,7 @@ test('shows error with wrong password', async ({ page }) => {
   await expect(page).toHaveURL(/.*login/);
 });
 
-test('shows error with wrong username', async ({ page }) => {
+test('shows error with wrong username @regression', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/login');
 
   await page.getByRole('textbox', { name: 'Username' }).fill('wronguser');
