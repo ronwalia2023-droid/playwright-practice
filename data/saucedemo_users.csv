@@ -1,0 +1,5 @@
+type,username,password,expected
+valid,standard_user,secret_sauce,https://www.saucedemo.com/inventory.html
+invalid,locked_out_user,secret_sauce,"Sorry, this user has been locked out"
+invalid,wrong_user,secret_sauce,Username and password do not match
+invalid,standard_user,wrong_password,Username and password do not match

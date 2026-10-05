@@ -1,8 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
 
-# Playwright
+# Playwright / Node
 node_modules/
-/test-results/
+test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Test reports
+log.html
+output.xml
+report.html
+test.robot
+selenium-screenshot-*.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
