@@ -28,5 +28,6 @@ def cart_page(inventory_page):
     inventory_page.add_product_to_cart("sauce-labs-backpack")
     assert inventory_page.get_cart_count() == 1
     inventory_page.go_to_cart()
-    inventory_page.page.wait_for_url("**/cart.html")
+    inventory_page.page.wait_for_url("**/cart.html", timeout=10000)
+    assert inventory_page.page.url.endswith("/cart.html"), f"After wait, URL is {inventory_page.page.url}"
     return CartPage(inventory_page.page)
