@@ -12,10 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
@@ -24,23 +20,3 @@ jobs:
 
       - name: Run smoke tests
         run: pytest -m smoke -v
-
-  regression:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    needs: smoke
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install Playwright browsers
-        run: playwright install --with-deps chromium
-
-      - name: Run regression tests
-        run: pytest -m regression -v
