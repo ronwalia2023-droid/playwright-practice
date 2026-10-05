@@ -20,3 +20,20 @@ jobs:
 
       - name: Run smoke tests
         run: pytest -m "smoke and not external" -v -s
+    
+
+  regression:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    needs: smoke
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install --with-deps chromium
+
+      - name: Run regression tests
+        run: pytest -m "regression and not external" -v -s
