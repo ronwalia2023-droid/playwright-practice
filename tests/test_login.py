@@ -2,7 +2,7 @@ import pytest
 from pages.herokuapp.login_page import LoginPage
 from pages.herokuapp.secure_area_page import SecureAreaPage
 
-@pytest.mark.smoke
+@pytest.mark.external
 @pytest.mark.parametrize("username, password, expected_message", [
     ("tomsmith",  "SuperSecretPassword!", "You logged into a secure area!"),
     ("tomsmith",  "wrongpass",            "Your password is invalid!"),

@@ -26,5 +26,6 @@ def inventory_page(logged_in_page):
 @pytest.fixture
 def cart_page(inventory_page):
     inventory_page.add_product_to_cart("sauce-labs-backpack")
+    assert inventory_page.get_cart_count() == 1   # ← force wait until badge updates
     inventory_page.go_to_cart()
     return CartPage(inventory_page.page)
