@@ -14,6 +14,7 @@ class CheckoutStepTwoPage:
    
     def finish_purchase(self):
         self.page.locator(self.finish_button).click()
+        self.page.wait_for_url("**/checkout-complete.html", timeout=10000)
 
     def cancel_purchase(self):
         self.page.locator(self.cancel_button).click()
