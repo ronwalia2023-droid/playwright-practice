@@ -5,6 +5,8 @@ class LoginPage:
         self.email_input = "[data-qa='login-email']"
         self.password_input = "[data-qa='login-password']"
         self.login_button = "[data-qa='login-button']"
+        self.logout_link = "a[href='/logout']"
+        self.error_message = "p:has-text('Your email or password is incorrect!')"
 
     def open(self):
         self.page.goto(self.url)
@@ -14,8 +16,13 @@ class LoginPage:
         self.page.locator(self.password_input).fill(password)
         self.page.locator(self.login_button).click()
 
+    def logout(self):
+        self.page.locator(self.logout_link).click()
+        self.page.wait_for_url("**/login", timeout=10000)
 
-
+    def get_error_message(self):
+        return self.page.locator(self.error_message).inner_text()
+        
 
 
 
