@@ -15,6 +15,7 @@ class CheckoutStepOnePage:
     def click_continue(self):
         self.page.locator(self.continue_button).click()
         self.page.wait_for_url("**/checkout-step-two.html", timeout=10000)
+        self.page.wait_for_selector("[data-test='total-label']", timeout=10000)
 
     def click_cancel(self):
         self.page.locator(self.cancel_button).click()
