@@ -26,7 +26,7 @@ class ProductsPage:
         return self.page.locator(self.modal_title).is_visible()    
 
     def view_cart_page(self):
-        self.page.locator(self.view_cart).click()
+        self.page.locator(self.view_cart).nth(1).click()
         self.page.wait_for_url("**/view_cart", timeout=10000)
 
     def continue_shopping(self):
