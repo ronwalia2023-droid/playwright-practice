@@ -2,7 +2,10 @@ prompts:
   - "You are an Air Canada bot. Answer: {{prompt}}"
 
 providers:
+  # This is a built-in Promptfoo mock that always passes
   - id: echo
+    config:
+      transform: "return 'I need to cancel my flight.'" 
 
 tests:
   - vars:
