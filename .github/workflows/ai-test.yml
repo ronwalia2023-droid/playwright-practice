@@ -1,0 +1,23 @@
+name: AI Quality Gate
+
+on:
+  push:
+    branches: [ "master" ] # Changed to master because that's your default branch
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  test-ai:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Run Promptfoo AI Eval
+      run: npx promptfoo@latest eval -c promptfooconfig.yaml
